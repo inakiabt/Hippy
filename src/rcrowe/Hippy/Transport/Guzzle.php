@@ -49,7 +49,7 @@ class Guzzle implements TransportInterface
      * @var array
      */
     protected $headers = array(
-        'Content-type' => 'application/application/json'
+        'Content-type' => 'application/json'
     );
 
     /**
@@ -200,8 +200,7 @@ class Guzzle implements TransportInterface
             'notify'         => $message->getNotification(),
             'color'          => $message->getBackgroundColor()
         );
-        $data = http_build_query($data, '', '&');
 
-        return $this->http->post($this->getUri(), $this->getHeaders(), $data)->send();
+        return $this->http->post($this->getUri(), $this->getHeaders(), json_encode($data))->send();
     }
 }
