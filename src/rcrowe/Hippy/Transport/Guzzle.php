@@ -49,13 +49,13 @@ class Guzzle implements TransportInterface
      * @var array
      */
     protected $headers = array(
-        'Content-type' => 'application/x-www-form-urlencoded'
+        'Content-type' => 'application/application/json'
     );
 
     /**
      * {@inheritdoc}
      */
-    public function __construct($token, $room, $from, $endpoint = 'https://api.hipchat.com/v1/')
+    public function __construct($token, $room, $from, $endpoint = 'https://api.hipchat.com/v2/')
     {
         $this->token = $token;
         $this->room  = $room;
@@ -178,7 +178,7 @@ class Guzzle implements TransportInterface
      */
     protected function getUri()
     {
-        return 'rooms/message?format=json&auth_token='.$this->getToken();
+        return 'room/'.$this->getRoom().'/notification?auth_token='.$this->getToken();
     }
 
     /**
@@ -195,13 +195,10 @@ class Guzzle implements TransportInterface
 
         // Build up the data we are sending to Hipchat
         $data = array(
-            'room_id'        => $this->getRoom(),
-            'from'           => $this->getFrom(),
             'message'        => $message->getMessage(),
             'message_format' => $message->getMessageFormat(),
             'notify'         => $message->getNotification(),
-            'color'          => $message->getBackgroundColor(),
-            'format'         => 'json',
+            'color'          => $message->getBackgroundColor()
         );
         $data = http_build_query($data, '', '&');
 
