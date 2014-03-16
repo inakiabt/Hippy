@@ -1,5 +1,5 @@
 {
-    "name": "rcrowe/hippy",
+    "name": "inakiabt/hippy",
     "description": "PHP client for HipChat. Designed for incidental notifications from an application.",
     "homepage": "https://github.com/rcrowe/Hippy",
     "license": "MIT",
@@ -8,6 +8,9 @@
         {
             "name": "Rob Crowe",
             "email": "hello@vivalacrowe.com"
+        },
+        {
+            "name": "Iñaki Abete"
         }
     ],
     "type": "library",
